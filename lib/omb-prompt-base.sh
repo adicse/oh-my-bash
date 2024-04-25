@@ -488,11 +488,14 @@ function _omb_prompt_get_python_version {
 
 function _omb_prompt_get_python_venv {
   python_venv=
+  VIRTUALENV=
   [[ ${OMB_PROMPT_SHOW_PYTHON_VENV-} == true ]] || return 1
   local virtualenv condaenv
   _omb_prompt_get_virtualenv
   _omb_prompt_get_condaenv
   python_venv=$virtualenv$condaenv
+  VIRTUALENV=$virtualenv
+  [[ $VIRTUALENV ]]
   [[ $python_venv ]]
 }
 function _omb_prompt_get_python_env {
